@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet private weak var windSpeedLabel: UILabel!
     
     // MARK: Private Properties
-    private var manager: WeatherManagerProtocol!
+    private var weatherManager: WeatherManagerProtocol!
     
     // MARK: Internal Properties
     var name: String?
@@ -29,9 +29,9 @@ class WeatherViewController: UIViewController {
     
     // MARK: Functions
     private func getWeather() {
-        manager = WeatherManager()
+        weatherManager = WeatherManager()
             
-        manager.fetchWeather(cityName: name ?? "") { [weak self] weather in
+        weatherManager.fetchWeather(cityName: name ?? "") { [weak self] weather in
             
             DispatchQueue.main.async {
                 self?.cityNameLabel.text = weather.name
